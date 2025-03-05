@@ -14,8 +14,7 @@ class AuthController {
     // Metode untuk menangani proses login
     public function login() {
         require_once 'app/helpers/AuthMiddleware.php';
-        AuthMiddleware::isGuest(); // Pastikan hanya tamu yang bisa mengakses halaman login
-
+        AuthMiddleware::isGuest(); 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
             $password = $_POST['password'];
@@ -32,7 +31,7 @@ class AuthController {
     // Metode untuk menangani proses registrasi
     public function register() {
         require_once 'app/helpers/AuthMiddleware.php';
-        AuthMiddleware::isGuest(); // Pastikan hanya tamu yang bisa mengakses halaman registrasi
+        AuthMiddleware::isGuest(); 
 
         if($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'];

@@ -17,16 +17,9 @@ class HomeController {
     
         $userId = AuthMiddleware::getUserId();
         $isAdmin = $_SESSION['user_role'] === 'admin';
-    
-        if ($isAdmin) {
-            $savings = $this->savingModel->getAll(); // Admin melihat semua data
-        } else {
-            $savings = $this->savingModel->getByUserId($userId); // User hanya melihat miliknya
-        }
-    
+        $savings = $this->savingModel->getByUserId($userId); // Admin & user hanya lihat setorannya sendiri
         require_once 'app/views/home.php';
     }
-    
     
 
     public function admin()
