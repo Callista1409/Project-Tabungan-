@@ -1,26 +1,29 @@
 <?php
 class AuthMiddleware {
-    // Memeriksa apakah pengguna sudah login
     public static function isAuthenticated() {
-        if (!isset($_SESSION['user_id'])) { // Jika tidak ada sesi user_id, arahkan ke halaman login
+        if (!isset($_SESSION['user_id'])) {
             header('Location: login');
             exit();
         }
     }
-    // Memeriksa apakah pengguna adalah admin
+
     public static function isAdmin() {
-        self::isAuthenticated(); // Pastikan pengguna sudah login
-        if ($_SESSION['user_role'] !== 'admin') { // Jika bukan admin, arahkan ke halaman home
+        self::isAuthenticated();
+        if ($_SESSION['user_role'] !== 'admin') {
             header('Location: home');
             exit();
         }
     }
 
-    // Memeriksa apakah pengguna adalah tamu (belum login)
     public static function isGuest() {
-        if (isset($_SESSION['user_id'])) { // Jika sudah login, arahkan ke halaman home
+        if (isset($_SESSION['user_id'])) {
             header('Location: home');
             exit();
         }
+    }
+
+    public static function getuserId(){
+        self::isAuthenticated();
+        return $_SESSION['user_id'];
     }
 }

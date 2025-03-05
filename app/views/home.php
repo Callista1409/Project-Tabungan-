@@ -17,7 +17,7 @@
                     <a href="admin">Admin Dashboard</a> <!-- Link ke dashboard admin -->
                 <?php endif; ?>
                 
-                <a href="save"><i class="fas fa-save"></i>Save</a>
+                <a href="save"><i class="fas fa-dollar"></i>Save</a>
                 <a href="logout"><i class="fas fa-sign-out-alt"></i>Logout</a>
             </div>
         <?php else: ?> <!-- Jika pengguna belum login -->
@@ -30,12 +30,12 @@
 
     <main>
         <h2>Recent Savings</h2>
-        <?php foreach($saving as $saving): ?> <!-- Looping untuk menampilkan data tabungan -->
+        <?php foreach($savings as $saving): ?> <!-- Looping untuk menampilkan data tabungan -->
             <div class="saving-card">
-                <h3><?php echo htmlspecialchars($saving['name']); ?></h3> <!-- Menampilkan nama pengguna -->
-                <p>Amount: Rp<?php echo number_format($saving['amount']); ?></p> <!-- Menampilkan jumlah tabungan -->
-                <p>Message: <?php echo htmlspecialchars($saving['message']); ?></p> <!-- Menampilkan pesan -->
-                <small>Date: <?php echo $saving['created_at']; ?></small> <!-- Menampilkan tanggal penyimpanan -->
+                <h3><?php echo htmlspecialchars($saving['name']); ?></h3> 
+                <p>Amount: Rp<?php echo number_format($saving['amount']); ?></p> 
+                <p>Message: <?php echo htmlspecialchars($saving['message']); ?></p> 
+                <small>Date: <?php echo $saving['created_at']; ?></small> 
             </div>
         <?php endforeach; ?>
     </main>
